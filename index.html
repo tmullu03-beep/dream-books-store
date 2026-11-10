@@ -1,1 +1,381 @@
-https://github.com/tmullu03-beep/dream-books-store/blob/main/index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dream Books | Discover Books You'll Love</title>
+<meta name="description" content="Discover books at Dream Books. Explore fiction, education, business, science and personal development. Find your next favorite book.">
+<meta name="theme-color" content="#142b45">
+<meta property="og:title" content="Dream Books | Online Bookstore">
+<meta property="og:description" content="Read more. Dream bigger. Discover your next favorite book.">
+<meta property="og:type" content="website">
+
+<style>
+:root {
+  --navy:#142b45;
+  --gold:#d6ad63;
+  --cream:#f8f6f0;
+  --white:#fff;
+  --ink:#202b38;
+  --muted:#718096;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+}
+header {
+  background:var(--navy);
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+.logo {font-size:23px;font-weight:bold}
+.logo span {color:var(--gold)}
+.cart-button {
+  border:1px solid #ffffff55;
+  color:white;
+  background:transparent;
+  padding:10px 15px;
+  border-radius:25px;
+  cursor:pointer;
+}
+.hero {
+  background:linear-gradient(120deg,#142b45,#294b68);
+  color:white;
+  padding:75px 7%;
+  text-align:center;
+}
+.hero small {
+  color:var(--gold);
+  letter-spacing:3px;
+  font-weight:bold;
+}
+.hero h1 {
+  font-family:Georgia,serif;
+  font-size:clamp(35px,6vw,60px);
+  margin:18px auto;
+  max-width:750px;
+}
+.hero p {
+  color:#e0e7ed;
+  font-size:17px;
+  line-height:1.7;
+}
+.hero a {
+  display:inline-block;
+  margin-top:18px;
+  padding:15px 25px;
+  background:var(--gold);
+  color:#172b40;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:7px;
+}
+.features {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:30px;
+  padding:23px 12px;
+  background:white;
+  color:var(--navy);
+  font-size:14px;
+}
+main {max-width:1200px;margin:auto;padding:45px 6%}
+.section-title {
+  font-family:Georgia,serif;
+  font-size:32px;
+  margin-bottom:8px;
+}
+.subtitle {color:var(--muted);line-height:1.6}
+.search-area {margin:27px 0}
+.search-area input {
+  width:100%;
+  padding:17px 20px;
+  font-size:16px;
+  border:1px solid #ddd;
+  border-radius:9px;
+  outline-color:var(--gold);
+  background:white;
+}
+.filters {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin:20px 0;
+}
+.filters button {
+  border:1px solid #ddd;
+  background:white;
+  padding:10px 15px;
+  border-radius:25px;
+  cursor:pointer;
+  color:var(--ink);
+}
+.filters button.active {
+  background:var(--navy);
+  color:white;
+}
+.toolbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:22px 0;
+}
+.toolbar select {
+  padding:11px;
+  border:1px solid #ddd;
+  border-radius:7px;
+  background:white;
+}
+.books {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:22px;
+}
+.book {
+  background:white;
+  padding:13px;
+  border-radius:12px;
+  box-shadow:0 5px 20px #142b4510;
+  transition:transform .2s;
+}
+.book:hover {transform:translateY(-4px)}
+.cover {
+  height:215px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:22px;
+  color:white;
+  border-radius:7px;
+  font-family:Georgia,serif;
+  font-size:23px;
+  font-weight:bold;
+  line-height:1.3;
+  background:linear-gradient(145deg,#243d56,#7e8b83);
+}
+.book:nth-child(3n+2) .cover {
+  background:linear-gradient(145deg,#72503d,#c39a66);
+}
+.book:nth-child(3n) .cover {
+  background:linear-gradient(145deg,#344b50,#8b9c88);
+}
+.book h3 {font-size:17px;margin:15px 0 6px}
+.book p {font-size:13px;color:var(--muted)}
+.price {font-size:17px;font-weight:bold;margin:13px 0}
+.book button,.primary {
+  width:100%;
+  border:0;
+  background:var(--navy);
+  color:white;
+  padding:13px;
+  border-radius:7px;
+  cursor:pointer;
+}
+.book button:hover,.primary:hover {background:#294b68}
+.empty {padding:30px;text-align:center;color:var(--muted)}
+.cart-section {
+  background:white;
+  border-radius:12px;
+  padding:25px;
+  margin-top:45px;
+}
+.cart-line {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #eee;
+  padding:12px 0;
+}
+.remove {
+  background:#f5e9e5;
+  border:0;
+  color:#9a3d32;
+  border-radius:5px;
+  padding:8px;
+}
+footer {
+  background:var(--navy);
+  color:white;
+  padding:40px 7%;
+  text-align:center;
+}
+footer p {color:#cbd5df;line-height:1.8}
+footer a {color:var(--gold)}
+@media(max-width:500px) {
+  header {padding:15px 4%}
+  .logo {font-size:19px}
+  .hero {padding:55px 5%}
+  main {padding:35px 4%}
+  .books {grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .cover {height:155px;font-size:19px;padding:12px}
+  .book {padding:10px}
+  .book h3 {font-size:15px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">📚 Dream <span>Books</span></div>
+  <button class="cart-button" onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">
+    🛒 Cart (<span id="count">0</span>)
+  </button>
+</header>
+
+<section class="hero">
+  <small>WELCOME TO DREAM BOOKS</small>
+  <h1>Every Book Opens a New World.</h1>
+  <p>Explore inspiring stories, discover knowledge and find the books that move you.</p>
+  <a href="#collection">Explore Our Collection →</a>
+</section>
+
+<div class="features">
+  <span>📚 Curated Book Collection</span>
+  <span>🔎 Easy Book Search</span>
+  <span>📱 Mobile Friendly</span>
+</div>
+
+<main id="collection">
+  <h2 class="section-title">Explore Our Books</h2>
+  <p class="subtitle">Find something wonderful to read today.</p>
+
+  <div class="search-area">
+    <input id="search" type="search"
+      placeholder="🔎 Search by book title, author or category..."
+      oninput="renderBooks()">
+  </div>
+
+  <div class="filters" id="filters"></div>
+
+  <div class="toolbar">
+    <strong id="results">Our collection</strong>
+    <select id="sort" onchange="renderBooks()">
+      <option value="default">Sort: Featured</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+      <option value="name">Name: A to Z</option>
+    </select>
+  </div>
+
+  <div class="books" id="books"></div>
+
+  <section class="cart-section" id="cart">
+    <h2>🛒 Your Shopping Cart</h2>
+    <div id="cartItems">Your cart is empty.</div>
+    <h3 id="total">Total: ETB 0</h3>
+    <p class="subtitle">Add your favorite books to your cart.</p>
+  </section>
+</main>
+
+<footer>
+  <h2>📚 Dream Books</h2>
+  <p>Read more. Dream bigger.</p>
+  <p>Discover your next favorite book with us.</p>
+  <p>© 2026 Dream Books. All rights reserved.</p>
+</footer>
+
+<script>
+const products = [
+ {id:1,name:"The Power of Learning",author:"Knowledge Collection",category:"Education",price:450},
+ {id:2,name:"Journey to Success",author:"Personal Growth",category:"Personal Growth",price:500},
+ {id:3,name:"The Art of Thinking",author:"Mind & Ideas",category:"Education",price:400},
+ {id:4,name:"Stories of Tomorrow",author:"Fiction Collection",category:"Fiction",price:350},
+ {id:5,name:"Business & Dreams",author:"Business Collection",category:"Business",price:600},
+ {id:6,name:"The World of Science",author:"Science Collection",category:"Science",price:550},
+ {id:7,name:"The Creative Mind",author:"Inspiration House",category:"Personal Growth",price:420},
+ {id:8,name:"Great World Stories",author:"Fiction Collection",category:"Fiction",price:380}
+];
+
+let activeCategory = "All";
+let cart = [];
+
+const categories = ["All","Fiction","Education","Business","Science","Personal Growth"];
+
+function makeFilters() {
+ document.getElementById("filters").innerHTML =
+ categories.map(c => `<button class="${c===activeCategory?'active':''}"
+ onclick="setCategory('${c}')">${c}</button>`).join("");
+}
+
+function setCategory(c) {
+ activeCategory=c;
+ makeFilters();
+ renderBooks();
+}
+
+function renderBooks() {
+ const q=document.getElementById("search").value.toLowerCase();
+ const sort=document.getElementById("sort").value;
+
+ let list=products.filter(b =>
+  (activeCategory==="All" || b.category===activeCategory) &&
+  (b.name+" "+b.author+" "+b.category).toLowerCase().includes(q)
+ );
+
+ if(sort==="low") list.sort((a,b)=>a.price-b.price);
+ if(sort==="high") list.sort((a,b)=>b.price-a.price);
+ if(sort==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
+
+ document.getElementById("results").textContent =
+ list.length+" books found";
+
+ document.getElementById("books").innerHTML = list.length ?
+ list.map(b=>`
+  <article class="book">
+   <div class="cover">${b.name}</div>
+   <h3>${b.name}</h3>
+   <p>${b.author} · ${b.category}</p>
+   <div class="price">ETB ${b.price}</div>
+   <button onclick="addToCart(${b.id})">Add to Cart</button>
+  </article>
+ `).join("") :
+ '<div class="empty">No books found. Try another search.</div>';
+}
+
+function addToCart(id) {
+ const book=products.find(b=>b.id===id);
+ cart.push(book);
+ updateCart();
+}
+
+function removeItem(i) {
+ cart.splice(i,1);
+ updateCart();
+}
+
+function updateCart() {
+ document.getElementById("count").textContent=cart.length;
+ document.getElementById("cartItems").innerHTML=cart.length ?
+ cart.map((b,i)=>`
+  <div class="cart-line">
+   <span>${b.name}<br><small>ETB ${b.price}</small></span>
+   <button class="remove" onclick="removeItem(${i})">Remove</button>
+  </div>
+ `).join("") : "Your cart is empty.";
+
+ const total=cart.reduce((sum,b)=>sum+b.price,0);
+ document.getElementById("total").textContent="Total: ETB "+total;
+}
+
+makeFilters();
+renderBooks();
+updateCart();
+</script>
+</body>
+</html>
